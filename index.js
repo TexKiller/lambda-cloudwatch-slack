@@ -14,6 +14,8 @@ var postMessage = function(message, callback) {
     'Content-Type': 'application/json',
     'Content-Length': Buffer.byteLength(body),
   };
+  console.info("sending message", message);
+  console.info("to", hookUrl);
 
   var postReq = https.request(options, function(res) {
     var chunks = [];
@@ -23,6 +25,8 @@ var postMessage = function(message, callback) {
     });
     res.on('end', function() {
       var body = chunks.join('');
+      console.info('response status code', res.statusCode);
+      console.info('response body', body);
       if (callback) {
         callback({
           body: body,
