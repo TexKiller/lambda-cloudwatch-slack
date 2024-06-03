@@ -16,6 +16,7 @@ var postMessage = function(message, callback) {
   };
   console.info("sending message", message);
   console.info("to", hookUrl);
+  console.info("with options", options);
 
   var postReq = https.request(options, function(res) {
     var chunks = [];
